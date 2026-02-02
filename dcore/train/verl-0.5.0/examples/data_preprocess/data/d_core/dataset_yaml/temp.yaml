@@ -1,0 +1,6 @@
+output: examples/data_preprocess/data/d_core/training_temp_data.parquet
+split: train
+data: 
+  [
+    "examples/data_preprocess/data/d_core/temp_data.json",
+  ]

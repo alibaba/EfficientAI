@@ -1,0 +1,12 @@
+max_token_len: 16384
+sample_num: -1
+format: moi_shuffle_each_system
+tokenizer_path: Qwen/Qwen3-8B
+output: corpus_merge/d_core_temp_16k_moi.jsonl
+input:
+  agent:
+    system_prompt: 'You are an agent with a lot of helpful tools.'
+    weight: 1.0
+    data: [
+      "corpus_merge/raw_dataset/temp.json",
+    ]

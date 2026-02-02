@@ -1,0 +1,44 @@
+# Model arguments
+model_name_or_path: meta-llama/Meta-Llama-3.1-8B-Instruct
+model_revision: main
+torch_dtype: bfloat16
+attn_implementation: flash_attention_2
+
+# Data training arguments
+dataset_name: corpus_merge/d_core_temp_16k_moi.jsonl
+dataset_configs:
+- default
+dataset_num_proc: 48
+
+# SFT trainer config
+bf16: true
+do_eval: false
+eval_strategy: 'no'
+gradient_accumulation_steps: 1
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+learning_rate: 1.0e-05
+log_level: info
+logging_steps: 1
+logging_strategy: steps
+lr_scheduler_type: cosine_with_min_lr
+lr_scheduler_kwargs:
+  min_lr_rate: 0.0001
+packing: false
+max_length: 16384
+max_steps: -1
+num_train_epochs: 3
+output_dir: models/Llama-3.1-8B-Instruct-8B-D-Core-TEMP-16k-MOI
+overwrite_output_dir: true
+per_device_eval_batch_size: 2
+per_device_train_batch_size: 2
+sft_attention_type: "only_last_assistant"   # we only learn last assistant
+push_to_hub: false
+save_strategy: "steps"
+save_steps: 1000
+save_total_limit: 5
+seed: 42
+use_liger: true
+warmup_ratio: 0.05
+remove_unused_columns: false 
